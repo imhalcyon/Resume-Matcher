@@ -1,5 +1,3 @@
-[![Resume Matcher + Hacktoberfest](Assets/img/Hacktoberfest_banner.png)](https://github.com/srbhr/Resume-Matcher/issues)
-
 [![Resume Matcher](Assets/img/header_image.png)](https://www.resumematcher.fyi)
 
 <div align="center">
@@ -224,6 +222,31 @@ To run the full stack web application (frontend client and backend api servers),
 
 <div align="center">
 
+
+## Code Formatting
+
+This project uses [Black](https://black.readthedocs.io/en/stable/) for code formatting. We believe this helps to keep the code base consistent and reduces the cognitive load when reading code.
+
+Before submitting your pull request, please make sure your changes are in accordance with the Black style guide. You can format your code by running the following command in your terminal:
+
+```sh
+black .
+```
+
+## Pre-commit Hooks
+
+We also use [pre-commit](https://pre-commit.com/) to automatically check for common issues before commits are submitted. This includes checks for code formatting with Black.
+
+If you haven't already, please install the pre-commit hooks by running the following command in your terminal:
+
+```sh
+pip install pre-commit
+pre-commit install
+```
+
+Now, the pre-commit hooks will automatically run every time you commit your changes. If any of the hooks fail, the commit will be aborted.
+
+
 ## Join Us, Contribute!
 
 </div>
@@ -243,18 +266,6 @@ Pull Requests & Issues are not just welcomed, they're celebrated! Let's create t
 📚 Contribute to the [Resume Matcher Docs](https://github.com/srbhr/Resume-Matcher-Docs) and help people get started with using the software.
 
 #### Tech Stack
-
-Current:
-
-- Python webapp in Streamlit.
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&color=blue&logoColor=green)
-
-
-
-In Development:
-
-- Check the [webapp](/webapp/) folder for a Next JS app in development. (In Development)
 
 ![Python](https://img.shields.io/badge/Python-FFD43B?style=flat-square&logo=python&logoColor=blue) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white) ![Next JS](https://img.shields.io/badge/Next-black?style=flat-square&logo=next.js&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat-square&logo=fastapi) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) ![& More](https://custom-icon-badges.demolab.com/badge/And_More-white?style=flat-square&logo=plus&logoColor=black)
 
