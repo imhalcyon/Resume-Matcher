@@ -51,8 +51,12 @@ def update_session_state(key, val):
 # Function to delete all files in a directory
 def delete_from_dir(filepath: str) -> bool:
     try:
-        for file in os.scandir(filepath):
-            os.remove(file.path)
+        # Create if directory does not exist
+        if not os.path.exists(filepath):
+            os.makedirs(filepath)
+        else:
+            for file in os.scandir(filepath):
+                os.remove(file.path)
 
         return True
     except OSError as error:
@@ -62,8 +66,7 @@ def delete_from_dir(filepath: str) -> bool:
 
 # Function to create a star-shaped graph visualization
 def create_star_graph(nodes_and_weights, title):
-    """
-    Create a star-shaped graph visualization.
+    """Create a star-shaped graph visualization.
 
     Args:
         nodes_and_weights (list): List of tuples containing nodes and their weights.
@@ -166,8 +169,7 @@ def create_star_graph(nodes_and_weights, title):
 def create_annotated_text(
     input_string: str, word_list: List[str], annotation: str, color_code: str
 ):
-    """
-    Create annotated text with highlighted keywords.
+    """Create annotated text with highlighted keywords.
 
     Args:
         input_string (str): The input text.
@@ -201,8 +203,7 @@ def create_annotated_text(
 
 # Function to read JSON data from a file
 def read_json(filename):
-    """
-    Read JSON data from a file.
+    """Read JSON data from a file.
 
     Args:
         filename (str): The path to the JSON file.
@@ -217,8 +218,7 @@ def read_json(filename):
 
 # Function to tokenize a string
 def tokenize_string(input_string):
-    """
-    Tokenize a string into words.
+    """Tokenize a string into words.
 
     Args:
         input_string (str): The input string.
@@ -304,11 +304,13 @@ with st.container():
 
                 if os.path.exists(save_path_jobDescription):
                     st.toast(
-                        f"File {uploaded_JobDescription.name} is successfully saved!",
+                        f"File {
+                            uploaded_JobDescription.name} is successfully saved!",
                         icon="✔️",
                     )
                     update_session_state("jobDescriptionUploaded", "Uploaded")
-                    update_session_state("jobDescriptionPath", save_path_jobDescription)
+                    update_session_state(
+                        "jobDescriptionPath", save_path_jobDescription)
         else:
             update_session_state("jobDescriptionUploaded", "Pending")
             update_session_state("jobDescriptionPath", "")
@@ -321,7 +323,8 @@ with st.spinner("Please wait..."):
         and st.session_state["jobDescriptionUploaded"] == "Uploaded"
     ):
 
-        resumeProcessor = ParseResume(read_single_pdf(st.session_state["resumePath"]))
+        resumeProcessor = ParseResume(
+            read_single_pdf(st.session_state["resumePath"]))
         jobDescriptionProcessor = ParseJobDesc(
             read_single_pdf(st.session_state["jobDescriptionPath"])
         )
@@ -395,7 +398,8 @@ with st.spinner("Please wait..."):
                     )
 
                     # Call the function with your data
-                    create_star_graph(selected_file["keyterms"], "Entities from Resume")
+                    create_star_graph(
+                        selected_file["keyterms"], "Entities from Resume")
             with jobDescriptionCol:
                 with st.expander("Extracted Entities"):
                     st.write(
@@ -515,7 +519,8 @@ with st.spinner("Please wait..."):
 
         st.markdown(
             f"Similarity Score obtained for the resume and job description is "
-            f'<span style="color:{score_color};font-size:24px; font-weight:Bold">{similarity_score}</span>',
+            f'<span style="color:{
+                score_color};font-size:24px; font-weight:Bold">{similarity_score}</span>',
             unsafe_allow_html=True,
         )
 
